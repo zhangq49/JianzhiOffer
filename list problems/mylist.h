@@ -3,11 +3,11 @@
 
 struct ListNode {
 	int data;
-	ListNode* pNext;
+	ListNode* p_next;
 };
 
-void AppendNode(ListNode** ppHead, int value);
+void append_node(ListNode** p_p_head, int value);
 
-void RemoveNode(ListNode** ppHead, int value);
+void remove_node(ListNode** p_p_head, int value);
 
 #endif

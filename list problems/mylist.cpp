@@ -1,44 +1,45 @@
 #include "mylist.h"
 
-void AppendNode(ListNode** ppHead, int value) {
-	if (ppHead == nullptr) return;
+void append_node(ListNode** p_p_head, int value) {
+	if (p_p_head == nullptr) return;
 
-	ListNode* pNewNode = new ListNode; // the same as new ListNode();
-	pNewNode->data = value;
-	pNewNode->pNext = nullptr;
+	ListNode* p_new_node = new ListNode; // the same as new ListNode();
+	p_new_node->data = value;
+	p_new_node->p_next = nullptr;
 
-	if (*ppHead == nullptr) {
-		*ppHead = pNewNode;
+	if (*p_p_head == nullptr) {
+		*p_p_head = p_new_node;
 	} else {
-		ListNode* pTmpNode = *ppHead;
-		while (pTmpNode->pNext != nullptr)
-			pTmpNode = pTmpNode->pNext;
-		pTmpNode->pNext = pNewNode;
+		ListNode* p_tmp_node = *p_p_head;
+		while (p_tmp_node->p_next != nullptr)
+			p_tmp_node = p_tmp_node->p_next;
+		p_tmp_node->p_next = p_new_node;
 	}
 }
 
-void RemoveNode(ListNode** ppHead, int value) {
-	if (ppHead == nullptr || *ppHead == nullptr) return;
+void remove_node(ListNode** p_p_head, int value) {
+	if (p_p_head == nullptr || *p_p_head == nullptr) return;
 
-	ListNode* pToBeDeleted = nullptr;
+	ListNode* p_node_to_be_deleted = nullptr;
 
-	if ((*ppHead)->data == value) { // cannot use *ppHead->data
-		pToBeDeleted = *ppHead;
-		*ppHead = (*ppHead)->pNext;
+	if ((*p_p_head)->data == value) { // cannot use *p_p_head->data
+		p_node_to_be_deleted = *p_p_head;
+		*p_p_head = (*p_p_head)->p_next;
 	} else {
-		ListNode* pNode = *ppHead;
-		while (pNode->pNext != nullptr && pNode->pNext->data != value) {
-			pNode = pNode->pNext;
+		ListNode* p_node = *p_p_head;
+		while (p_node->p_next != nullptr && p_node->p_next->data != value) {
+			p_node = p_node->p_next;
 		}
 
-		if (pNode->pNext != nullptr && pNode->pNext->data == value) {
-			pToBeDeleted = pNode->pNext;
-			pNode->pNext = pNode->pNext->pNext;
+		if (p_node->p_next != nullptr && p_node->p_next->data == value) {
+			p_node_to_be_deleted = p_node->p_next;
+			p_node->p_next = p_node->p_next->p_next;
 		}
 	}
 
-	if (pToBeDeleted != nullptr) {
-		delete pToBeDeleted;
-		pToBeDeleted = nullptr;
+	if (p_node_to_be_deleted != nullptr) {
+		delete p_node_to_be_deleted;
+		p_node_to_be_deleted = nullptr;
 	}
 }
+
